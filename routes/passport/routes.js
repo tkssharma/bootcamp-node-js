@@ -53,9 +53,16 @@ router.post('/register', expressJoiValidator(expressJoi.createUser), (req, res) 
 
 const redirectSocialUser = (req, res) => {
   res.json(req.user);
+  jwt.sign({ user: req.user }, 'secretkey', (tokError, token) => {
+    res.json({
+      code: 200,
+      message: 'success',
+      token
+    });
+  });
 };
 
-// auth/login/facebook ---> 
+// auth/login/facebook --->
 router.get('/login/facebook', FacebookRoutes.authenticate());
 router.get('/callback/facebook', FacebookRoutes.callback(), redirectSocialUser);
 
