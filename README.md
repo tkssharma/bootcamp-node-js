@@ -7,14 +7,14 @@ REST API to support application features
   - Express CORS enabled
   - Mongoose as ODM driver
   - eslint validation
-  - git hooks & ci/cd in place
+  - git hooks & CI/CD in place
   - TDD in progress with Mocha
-  - JWT based wuthentication
+  - JWT based authentication
   - REST API with MongoDB
 
 # Node js bootcamp app #
 
-"Its just simple application to teach students on node js basics.
+"It's just simple application to teach students on node js basics.
 REST API developed in Node and React is consuming those services with Redux as state manager.
 
 # Application dependancies
