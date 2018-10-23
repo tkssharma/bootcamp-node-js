@@ -9,7 +9,6 @@ const movieSchema = new Schema({
   image: { type: String },
   description: { type: String },
   showtimes: { type: Array },
-
 }, {
   timestamps: {
     createdAt: 'created_at',

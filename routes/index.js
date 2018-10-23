@@ -4,10 +4,8 @@ const router = express.Router();
 
 /* GET home page */
 router.get('/', (req, res, next) => {
-  res.render('index');
+  res.status(200).json({ message: 'application is healthy API are running' });
 });
-router.post('/hello', (req, res, next) => {
-  res.render('index');
-});
+
 
 module.exports = router;

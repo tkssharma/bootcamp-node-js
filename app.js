@@ -6,30 +6,29 @@ console.log(` using ${process.env.NODE_ENV} to run application`);
 
 global.configuration = require(`./config/environments/${process.env.NODE_ENV}`);
 
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
 const express = require('express');
-const favicon = require('serve-favicon');
-const hbs = require('hbs');
-const logger = require('morgan');
 const path = require('path');
 const mongoose = require('./lib/mongoose')();
 const index = require('./routes/index');
-const authRoutes = require('./routes/authRoutes');
-const movies = require('./routes/movies');
+const moviesRoutes = require('./routes/movies');
 const ValidateTokenMiddleware = require('./Middleware/authMiddleware');
-const passportRoutes = require('./routes/passport/routes');
+const authRoutes = require('./routes/passport/routes');
+const commonRoutes = require('./routes/commonRoutes');
+
 
 const app = express();
 require('./express')(app);
 
 app.use('/', index);
-// app.use('/auth', authRoutes);
-app.use('/auth', passportRoutes);
+// auth/login
+// auth/register
+app.use('/auth', authRoutes);
+// test/login
+// test/register
+app.use('/test', commonRoutes);
 
-// Noe this is a protected route
-app.use('/movies', ValidateTokenMiddleware.validateToken, movies);
-// app.use('/auth', authRoutes);
+
+app.use('/movies', ValidateTokenMiddleware.validateToken, moviesRoutes);
 
 
 app.use(require('node-sass-middleware')({
