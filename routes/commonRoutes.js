@@ -17,8 +17,9 @@ router.post('/login', (req, res, next) => {
     if (err) {
       res.status(401).json({ message: 'invalid user/password' });
     } else {
-      res.cookie('auth', token);
-      res.status(200).json({ success: true });
+      // res.cookie('auth', token);
+      // res.status(200).json({ success: true });
+      res.status(200).json({ message: 'ok', token });
     }
   });
 });

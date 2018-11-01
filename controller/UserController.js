@@ -60,6 +60,7 @@ class userController {
   // old method
   static createUser(req, res, cb) {
     const { body } = req;
+    console.log(body);
     helper.generateSaltValue(req, (err, hash) => {
       if (err) {
         cb(err, null);

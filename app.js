@@ -3,7 +3,6 @@ require('dotenv').config();
 // loading .env file and putting all keys in process.env
 
 console.log(` using ${process.env.NODE_ENV} to run application`);
-
 global.configuration = require(`./config/environments/${process.env.NODE_ENV}`);
 
 const express = require('express');
