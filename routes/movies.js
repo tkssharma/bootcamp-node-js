@@ -43,6 +43,16 @@ router.post('/:id/review', (req, res, next) => {
   });
 });
 
+router.get('/:id/review/:idReview', (req, res, next) => {
+  reviewController.findReview(req, res, (err, data) => {
+    if (err) {
+      res.status(500).json({ message: 'internal server error for finding the specific review'});
+    } else {
+      res.status(200).json({ message: data });
+    }
+  });
+});
+
 /*
 router.put('/:id', expressJoiValidator(expressJoi.createMovie), (req, res, next) => {
   movieController.createMovie(req, res).then((data) => {
